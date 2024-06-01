@@ -3,11 +3,11 @@
 欢迎来到香港中文大学（深圳）RoboMaster过岗龙战队电控组！
 
 ## 开发教程&文档
-[入门教程](./Beginning/Beginning.md)
+[入门教程](https://github.com/RM-DragoPass-EC-Group/.github/blob/main/profile/Beginning/Beginning.md)
 
-[开发进阶](./Project%20Structure/Project%20Structure.md)
+[开发进阶](https://github.com/RM-DragoPass-EC-Group/.github/blob/main/profile/Project%20Structure/Project%20Structure.md)
 
-[开发规范](./Development%20Standard/Development%20Standard.md)
+[开发规范](https://github.com/RM-DragoPass-EC-Group/.github/blob/main/profile/Development%20Standard/Development%20Standard.md)
 
 [硬件说明书](./Docs/)
 
