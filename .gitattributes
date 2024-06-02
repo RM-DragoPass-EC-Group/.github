@@ -1,4 +1,0 @@
-profile/Beginning/Installers/Compiler_v5.zip filter=lfs diff=lfs merge=lfs -text
-profile/Beginning/Installers/mdk540.exe filter=lfs diff=lfs merge=lfs -text
-profile/Beginning/Installers/CubeMX.exe filter=lfs diff=lfs merge=lfs -text
-profile/Beginning/Installers/ST-Link_Driver.zip filter=lfs diff=lfs merge=lfs -text
