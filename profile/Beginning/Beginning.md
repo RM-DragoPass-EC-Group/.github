@@ -24,6 +24,16 @@ DragoPass电控组所有项目管理、版本控制在Github上进行，因此�
 安装成功后，Keil uVision5的Pack Manager会自动运行，如下图所示。每款开发板的处理器、GPIO等参数不同，因此需要配置对应的扩展包。在下文中会详细讲解。
 ![](./Images/Pack_Manager.png)
 
+### CubeMX
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CubeMX是一个图形化的用户界面工具，用于配置STM32微控制器和生成初始化C代码。
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+运行[CubeMX.exe](https://cuhko365-my.sharepoint.com/:f:/g/personal/123090823_link_cuhk_edu_cn/EvkIzlm_j8ZChO_C-2iTR_wBNjz43P8G0YBSb_AiGYvgWg?e=t37jqC)，完成安装过程。
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+由于当前电控组所有开发都在官方的开发板C上进行，微处理器时序和初始化代码可使用已有框架，暂时不需要使用CubeMX单独配置。但是未来如果使用其他开发板，可能需要使用CubeMX，因此建议了解一下CubeMX的使用。
+
 ### VSCode Keil扩展（可选、推荐）
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 VSCode请前往微软官网自行安装。
@@ -35,9 +45,7 @@ VSCode请前往微软官网自行安装。
 安装完成后打开扩展设置：![](./Images/Extension_Setting_Entry.png) 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-将Keil路径设置为你的Keil安装路径\UV4\UV4.exe（即Keil应用程序位置）（以Keil安装在C:\Keil_v5为例）：![](./Images/Extension_Keil_Path.png) 
-
-### CubeMX
+将Keil路径设置为你的Keil安装路径\UV4\UV4.exe（即Keil应用程序位置）（以Keil安装在C:\Keil_v5为例）：![](./Images/Extension_Keil_Path.png)
 
 ### Copilot（可选、推荐）
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -95,7 +103,7 @@ Target目录下这个位置选择v5编译器：![](./Images/Target.png)
 Debug目录下这个位置选择ST-Link：![](./Images/Debugger.png)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-回到Keil主页面，点击Build，开始编译。由于工程较大，首次编译时间较长。后续每次编译只会编译更改部分，5s内即可完成。（实测R9 7940HS编译约1min）可以在界面下方Build Output处看到编译进度。![](./Images/Build.png)
+回到Keil主页面，点击Build，开始编译。由于工程较大，首次编译时间较长。后续每次编译只会编译更改部分，5s内即可完成。（旁边还有"Rebuild"按键，可完整编译整个工程）（实测R9 7940HS编译约1min）可以在界面下方Build Output处看到编译进度。![](./Images/Build.png)
 
 ### 烧录至开发板
 #### 安装ST-Link烧录器驱动
@@ -109,9 +117,16 @@ Debug目录下这个位置选择ST-Link：![](./Images/Debugger.png)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 前面是USB接口，后面有十根引脚，接口定义均标记在烧录器上。开发板C的SWD下载器使用SWDIO, GND, SWCLK, 3.3V四根。以如下方式通过专用线材连接C板：![](./Images/Connect_Debugger.png)
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+在调试过程中烧录器往往放置在机器人云台上，偶尔因程序bug将烧录器甩飞，导致烧录器损坏，因此队伍中有些烧录器不能正常工作。如果烧录不成功，可以怀疑是烧录器损坏。
+
 #### 烧录
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 在项目编译完成后，在Keil界面此处烧录：![](./Images/Flash.png)
 
 ### 使用VSCode扩展加载工程、编译、烧录（可选、推荐）
-以20.standard_robot为例，在根目录打开VSCode，
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+以20.standard_robot为例，在根目录打开VSCode，在Explorer中打开"KEIL UVISION PROJECT"选项卡,点击右侧"Open keil uVision project"按键。![](./Images/VSCode_Open_Project.png)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+进入MDR-ARM目录打开standard_robot.uvprojx,打开选项卡,可以看到项目文件。项目名右侧的三个按键分别是“编译”，“烧录”和“重编译”。功能与Keil IDE中三个功能相同：![](./Images/VSCode_File_Bar.png)
