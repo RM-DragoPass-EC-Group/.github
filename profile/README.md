@@ -9,7 +9,7 @@
 
 [开发规范](https://github.com/RM-DragoPass-EC-Group/.github/blob/main/profile/Development%20Standard/Development%20Standard.md)
 
-[硬件说明书](./Docs/)
+[硬件说明书](https://github.com/RM-DragoPass-EC-Group/.github/tree/main/Docs)
 
 ## 电控代码
 [24赛季步兵](https://github.com/RM-DragoPass-EC-Group/24-season-Infantry)
