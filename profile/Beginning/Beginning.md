@@ -24,6 +24,10 @@ DragoPass电控组所有项目管理、版本控制在Github上进行，因此�
 安装成功后，Keil uVision5的Pack Manager会自动运行，如下图所示。每款开发板的处理器、GPIO等参数不同，因此需要配置对应的扩展包。在下文中会详细讲解。
 ![](./Images/Pack_Manager.png)
 
+### Keil 注册机
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+由于免费版Keil µVision会限制编译工程的总行数，我们需要使用Keil注册机生成密钥激活Keil专业版。安装包和使用教程请见[教程](https://blog.csdn.net/wy1948/article/details/113530260)。注册机安装过程中各种防火墙软件都会报病毒，这个程序本身也十分可疑。我实在不想在本地留这个安装包，就不放onedrive链接了。由于生成的密钥和电脑ID有关，所以需要下载使用。
+
 ### CubeMX
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 CubeMX是一个图形化的用户界面工具，用于配置STM32微控制器和生成初始化C代码。
