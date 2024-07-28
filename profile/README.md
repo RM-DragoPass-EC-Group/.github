@@ -21,3 +21,6 @@
 ## 寻求帮助
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 我们战队与深北莫北极熊战队和仲恺奇点战队关系密切，其中电控代码框架采用的是仲恺的事件操作系统。若有无法解决的问题可以线上、线下询问。具体联系方式询问组员。
+
+## 团队官网
+https://shuhanzhang8.wixsite.com/mysite
