@@ -16,7 +16,7 @@
 浮点数：fp32
 
 ## Debugging
-将遇到的问题和解决方案列在github repository的README.md中。
+将遇到的问题，问题出现的原因和解决方案列在github repository的README.md中。
 
 ## 版本控制
 严格区分Stable和Dev版本代码，使用Git branch区分。
