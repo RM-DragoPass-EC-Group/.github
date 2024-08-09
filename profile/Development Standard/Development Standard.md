@@ -15,8 +15,8 @@
 整数：int32_t
 浮点数：fp32
 
-## 代码风格
-//TODO
+## Debugging
+将遇到的问题和解决方案列在github repository的README.md中。
 
 ## 版本控制
 严格区分Stable和Dev版本代码，使用Git branch区分。
@@ -31,7 +31,7 @@ Github每个仓库存放一个开发板运行的程序。
 目前使用ST_Link调试器调试、烧录，未来会尝试使用远程调试器。
 
 ## 修改日志
-所有源代码顶部有版本号、操作者和改动内容记录，Debug和开发新功能时应该记录。
+在github repository的README.md中记录每次修改的内容和修改人。
 
 ## 组间交流
 ### 与机械组
