@@ -9,6 +9,8 @@
 
 [开发规范](https://github.com/RM-DragoPass-EC-Group/.github/blob/main/profile/Development%20Standard/Development%20Standard.md)
 
+[接线说明](https://github.com/RM-DragoPass-EC-Group/.github/blob/main/profile/Electrical%20Structure/Electrical%20Structure.md)
+
 [硬件说明书](https://github.com/RM-DragoPass-EC-Group/.github/tree/main/Docs)
 
 ## 电控代码
