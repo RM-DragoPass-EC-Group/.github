@@ -248,7 +248,6 @@ Button_Init(&keyboard->key_W,1,Get_Key_Status,(void*)RC_Key_W);
  */
 void Button_Register(Button_t *button, Button_Event_t event, Button_Callback_t callback_fun);
 ```
-其中button是按键句柄，event是事件类型，callback_fun是绑定的回调函数。
 例如：
 ```c
 Button_Register(&keyboard->key_W,Press_Hold,Front_Press_Hold);
@@ -392,7 +391,7 @@ typedef struct
  */
 PIDElem_t Basic_PID_Controller(PIDConfig_t *PID_Config, const PIDElem_t E_value, const PIDElem_t C_value)
 ```
-其中E_value是期望值，C_value是实际值。例如：
+例如：
 ```c
 PID_out = Basic_PID_Controller(pid_config, target_speed, current_speed);
 ```
@@ -480,12 +479,101 @@ typedef struct
 	uint16_t rear;							/**< 队列尾指针*/
 	uint16_t size;							/**< 队列大小*/
 	uint16_t elem_size;						/**< 队列元素大小*/
-	queue_full_hander_t full_hander : 2; 	/**< 满队处理方式*/
+	queue_full_hander_t full_handler : 2; 	/**< 满队处理方式*/
 	uint8_t error_code : 4;					/**< 队列错误码*/
 	uint8_t use_extern_buffer : 1;			/**< 使用外部缓存数组*/
 	SEML_LockType_t Lock : 1;				/**< 互斥锁*/
 } s_queue;
 ```
+其中queue_full_handler枚举类型定义如下：
+```c
+/**
+ * @brief 满队处理方式
+ */
+typedef enum
+{
+	queue_full_handler_error = 0, 	/**< 报错*/
+	queue_full_handler_reapply,	 	/**< 重新申请内存*/
+	queue_full_handler_cover,		/**< 覆盖队头*/
+} queue_full_handler_t;
+```
 
+#### InitQueue (queue.h)
+```c
+/**
+ * @brief 初始化队列
+ * @param[in,out] queue 队列结构体指针
+ * @param[in] elem_size 元素大小，通常是sizeof()
+ * @param[in] size 队列大小
+ * @param[in] buffer 缓存数组，使用栈区自动分配可传NULL,传入大小需比申请尺寸大1
+ * @param[in] full_handler 满队处理方式
+ * @attention 使用外部缓存数组时候满队处理方式不能使用queue_full_hander_reapply
+ * @return 队列执行状态
+ */
+SEML_StatusTypeDef InitQueue(s_queue *queue, const uint16_t elem_size, const uint16_t size, void *buffer, const queue_full_handler_t full_handler);
+```
+例如：
+```c
+int* buffer[10];
+InitQueue(queue, sizeof(int), 10, buffer, queue_full_hander_error);
+```
+这行代码初始化了一个大小为10的int型队列，采用报错的满队处理方式。
+
+#### Enqueue (queue.c)
+```c
+SEML_StatusTypeDef EnQueue(s_queue *queue, const void *data);
+```
+
+#### Dequeue (queue.c)
+```c
+SEML_StatusTypeDef DeQueue(s_queue *queue, void *data);
+```
+
+#### GetQueueFront (queue.c)
+不出队获取队头元素。
+```c
+SEML_StatusTypeDef GetQueueFront(s_queue *queue, void *data);
+```
+
+#### GetQueueRear (queue.c)
+不出队获取队尾元素。
+```c
+SEML_StatusTypeDef GetQueueRear(s_queue *queue, void *data);
+```
+
+#### GetQueueLen (queue.c)
+```c
+uint16_t GetQueueLen(const s_queue *queue);
+```
+
+#### VisitQueueElem (queue.c)
+获取队列任意位置元素。
+```c
+SEML_StatusTypeDef VisitQueueElem(s_queue *queue, uint16_t index, void *data, queue_read_while_t status);
+```
+其中queue_read_while_t是决定读取或写入的枚举类型，在queue.h中有如下定义：
+```c
+typedef enum
+{
+	queue_read = 0, /**< 读取队列元素 */
+	queue_write,		/**< 写入队列元素 */
+} queue_read_while_t;
+```
+
+### Stack
+s_stack结构体定义在stack.h中，如下：
+```c
+typedef struct
+{
+	void *address;							/**< 栈初始地址*/
+	uint16_t top;							/**< 栈顶指针*/
+	uint16_t size;							/**< 栈大小*/
+	uint16_t elem_size;						/**< 元素大小*/
+	stack_full_hander_t full_hander : 1;	/**< 满栈处理方式*/
+	stack_error_code_t error_code : 3;		/**< 栈错误码*/
+	FunctionalState use_extern_buffer : 1; 	/**< 使用外部缓存数组*/
+	SEML_LockType_t Lock : 1;
+} s_stack;
+```
 
 # 程序结构
