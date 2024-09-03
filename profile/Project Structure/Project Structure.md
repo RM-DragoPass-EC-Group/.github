@@ -470,6 +470,22 @@ math_filter.c中还有滑动均值滤波器，使用方法类似。卡尔曼滤�
 math目录下还有一些其他算法，如矩阵运算、向量运算等。需要时可以查看。
 
 ## 一些常用的数据类型抽象
-### 
+### Queue
+s_queue结构体定义在queue.h中，如下：
+```c
+typedef struct
+{
+	void *address;							/**< 队列初始地址*/
+	uint16_t front;							/**< 队列头指针*/
+	uint16_t rear;							/**< 队列尾指针*/
+	uint16_t size;							/**< 队列大小*/
+	uint16_t elem_size;						/**< 队列元素大小*/
+	queue_full_hander_t full_hander : 2; 	/**< 满队处理方式*/
+	uint8_t error_code : 4;					/**< 队列错误码*/
+	uint8_t use_extern_buffer : 1;			/**< 使用外部缓存数组*/
+	SEML_LockType_t Lock : 1;				/**< 互斥锁*/
+} s_queue;
+```
+
 
 # 程序结构
