@@ -1,5 +1,5 @@
 # Intro
-目前我们所有的程序都基于仲恺的 EventOS 操作系统开发。这个操作系统提供了硬件、算法、多进程和全局变量抽象，下面我将以步兵为例介绍这几种抽象的使用方法，并在此基础上讲解我们的程序结构。
+目前我们所有的程序都基于仲恺的 EventOS 操作系统开发。这个操作系统提供了硬件、算法、数据类型、多进程和全局变量抽象，下面我将以步兵为例介绍这几种抽象的使用方法，并在此基础上讲解我们的程序结构。
 
 # 抽象
 ## 一些常用的硬件抽象
@@ -320,7 +320,156 @@ static void receive(void)
 len需要大于接收数据包的长度，usb_buf是接收数据的缓冲区。我们将接收数据的第一位作为header来判断数据包类型，然后根据不同的header调用不同的处理函数。
 
 ## 一些常用的算法抽象
-### PID
+### 常用计算
+常用计算函数在math_common.c中定义，如指数、对数、三角函数、阶乘等。需要时可以查看。
 
+### PID
+#### PID_Init (PID.c)
+```c
+/**
+ * @brief PID配置初始化
+ *     - 只配置最基础的pid参数
+ *     - 抗积分饱和方式：动态钳位
+ *     - 微分低通滤波:不滤波
+ * @param[out] PID_Config PID配置结构体指针
+ * @param[in] Kp 比例因子
+ * @param[in] Ki 积分因子
+ * @param[in] Kd 微分因子
+ * @param[in] PID_Max 输出最大限幅值
+ * @param[in] PID_Min 输出最小限幅值
+ * @param[in] sample_time 采样时间(秒)
+ */
+void PID_Init(PIDConfig_t *PID_Config, PIDElem_t Kp, PIDElem_t Ki, PIDElem_t Kd, PIDElem_t PID_Max, PIDElem_t PID_Min, float sample_time)
+```
+例如：
+```c
+PID_Init(pid_config, 15, 0.5f, 0, 16000, -16000, 0.001f);
+```
+这行代码初始化了一个PID控制器，kp为15，ki为0.5，kd为0，输出最大值为16000，输出最小值为-16000，采样时间为1ms。
+
+其中PIDElem_t是PID参数的数据类型，定义为float.
+
+PIDConfig_t结构体在PID.h中定义如下：
+```c
+typedef struct
+{
+	PID_Param_t Param; 					/**< PID参数 */
+
+	float SampTime; 					/**< 采样时间 */
+
+	PIDElem_t PIDMax;					/**< PID最大值 */
+	PIDElem_t PIDMin;					/**< PID最大值 */
+	PIDElem_t ErrValue;					/**< 误差 */
+	PIDElem_t lest_ErrValue;			/**< 上一次误差 */
+	PIDElem_t ITerm;					/**< 积分累加值 */
+	PIDElem_t DiffValue;				/**< 误差的导数 */
+	PID_anti_windup_t anti_windup;		/**< 积分抗饱和方式 */
+	PIDElem_t Ki_Clamp;					/**< 反馈抑制抗饱和系数 */
+	PIDElem_t Kd_lowpass;				/**< 微分低通滤波器系数 */
+	PID_Callback_Fun_t Callback_Fun;	/**< PID回调函数 */
+
+	PIDElem_t PIDout; 					/**< PID输出值 */
+} PIDConfig_t;
+```
+其中PID_Param_t在PID.h中定义如下：
+```c
+typedef struct
+{
+	PIDElem_t Kp; /**< 比例因子 */
+	PIDElem_t Ki; /**< 积分因子 */
+	PIDElem_t Kd; /**< 微分因子 */
+} PID_Param_t;
+```
+
+#### Basic_PID_Controller (PID.c)
+```c
+/**
+ * @brief 基础位置式PID控制器
+ * @param[in,out] PIDConfig PID配置
+ * @param[in] E_value 期望值
+ * @param[in] C_value 实际值
+ * @return 当前PID输出
+ */
+PIDElem_t Basic_PID_Controller(PIDConfig_t *PID_Config, const PIDElem_t E_value, const PIDElem_t C_value)
+```
+其中E_value是期望值，C_value是实际值。例如：
+```c
+PID_out = Basic_PID_Controller(pid_config, target_speed, current_speed);
+```
+这行代码计算了一个PID输出，期望值为target_speed，实际值为current_speed。
+
+### CRC校验
+get_CRC16_check_sum方法定义在CRC8_CRC16.c中，用于计算CRC16校验和。
+```c
+/**
+  * @brief          计算CRC16
+  * @param[in]      pch_message: 数据
+  * @param[in]      dw_length: 数据和校验的长度
+  * @param[in]      wCRC:初始CRC16
+  * @retval         计算完的CRC16
+  */
+uint16_t get_CRC16_check_sum(uint8_t *pch_message,uint32_t dw_length,uint16_t wCRC)
+```
+其中pch_message是数据，dw_length是数据长度，wCRC是初始CRC16值。例如：
+```c
+checksum = get_CRC16_check_sum(msg, sizeof(msg), 0xffff);
+```
+这行代码计算了msg的CRC16校验和。
+
+### 滤波器
+#### RMS_filter_Init (math_filter.c)
+```c
+/**
+ * @brief 均方根滤波器初始化
+ * @param[out] RMS_filter  均方根配置结构体指针
+ * @param[in] window_width 滑动窗口大小
+ * @param[in] init_value 初始值
+ * @param[in,out] buffer 队列缓存数组
+*/
+void RMS_filter_Init(RMS_filter_t *RMS_filter,const uint16_t window_width,const float init_value,float *buffer);
+```
+例如：
+```c
+RMS_filter_Init(&rms_filter, 10, 0, rms_buffer);
+```
+这行代码初始化了一个滑动窗口大小为10的均方根滤波器，初始值为0。
+
+其中RMS_filter_t结构体在math_filter.h中定义如下：
+```c
+typedef struct 
+{
+    uint16_t window_width;  /**< 窗口大小 */
+    float gain;
+    uint16_t count;         /**< 计数值 */
+    float RMS_value;        /**< rms值 */
+    float square_sum;       /**< 平方和 */
+    s_queue data_queue;     /**< 数据队列*/
+} RMS_filter_t;
+```
+
+#### RMS_filter (math_filter.c)
+```c
+/**
+ * @brief 均方根滤波器
+ * @param[in,out] RMS_filter 滤波器指针
+ * @param[in] data 输入数据
+ * @return 滤波后结果
+*/
+_FAST float RMS_filter(RMS_filter_t *RMS_filter,const float data);
+```
+例如：
+```c
+filtered_data = RMS_filter(&rms_filter, raw_data);
+```
+这行代码对raw_data进行均方根滤波。
+
+#### 其他滤波器
+math_filter.c中还有滑动均值滤波器，使用方法类似。卡尔曼滤波器算法十分简单，但暂未封装。
+
+### 其他算法
+math目录下还有一些其他算法，如矩阵运算、向量运算等。需要时可以查看。
+
+## 一些常用的数据类型抽象
+### 
 
 # 程序结构
