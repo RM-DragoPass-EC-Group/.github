@@ -5,11 +5,13 @@
 ## 开发教程&文档
 [入门教程](https://github.com/RM-DragoPass-EC-Group/.github/blob/main/profile/Beginning/Beginning.md)
 
-[开发进阶](https://github.com/RM-DragoPass-EC-Group/.github/blob/main/profile/Project%20Structure/Project%20Structure.md)
-
 [开发规范](https://github.com/RM-DragoPass-EC-Group/.github/blob/main/profile/Development%20Standard/Development%20Standard.md)
 
-[接线说明](https://github.com/RM-DragoPass-EC-Group/.github/blob/main/profile/Electrical%20Structure/Electrical%20Structure.md)
+[电气结构](https://github.com/RM-DragoPass-EC-Group/.github/blob/main/profile/Electrical%20Structure/Electrical%20Structure.md)
+
+[系统抽象](https://github.com/RM-DragoPass-EC-Group/.github/blob/main/profile/OS%20Abstraction/OS%20Abstraction.md)
+
+[程序结构](https://github.com/RM-DragoPass-EC-Group/.github/blob/main/profile/Project%20Structure/Project%20Structure.md)
 
 [硬件说明书](https://github.com/RM-DragoPass-EC-Group/.github/tree/main/Docs)
 
