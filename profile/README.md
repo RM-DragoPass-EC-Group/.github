@@ -16,11 +16,13 @@
 [硬件说明书](https://github.com/RM-DragoPass-EC-Group/.github/tree/main/Docs)
 
 ## 电控代码
-[24赛季步兵](https://github.com/RM-DragoPass-EC-Group/24-season-Infantry)
+[步兵](https://github.com/RM-DragoPass-EC-Group/24-season-Infantry)
 
-[24赛季哨兵底盘](https://github.com/RM-DragoPass-EC-Group/24-season-Sentry-Chassis)
+[哨兵底盘](https://github.com/RM-DragoPass-EC-Group/24-season-Sentry-Chassis)
 
-[24赛季哨兵云台](https://github.com/RM-DragoPass-EC-Group/24-season-Sentry-Gimbal)
+[哨兵云台](https://github.com/RM-DragoPass-EC-Group/24-season-Sentry-Gimbal)
+
+[英雄](https://github.com/RM-DragoPass-EC-Group/25-season-Hero)
 
 ## 寻求帮助
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
