@@ -24,7 +24,7 @@
 
 [英雄](https://github.com/RM-DragoPass-EC-Group/25-season-Hero)
 
-.[全向轮](https://github.com/RM-DragoPass-EC-Group/25-season-Omni-Infantry.git)
+[全向轮](https://github.com/RM-DragoPass-EC-Group/25-season-Omni-Infantry.git)
 
 ## 寻求帮助
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
