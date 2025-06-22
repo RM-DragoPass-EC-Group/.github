@@ -16,7 +16,7 @@
 [硬件说明书](https://github.com/RM-DragoPass-EC-Group/.github/tree/main/Docs)
 
 ## 电控代码
-[步兵](https://github.com/RM-DragoPass-EC-Group/24-season-Infantry)
+[麦轮步兵](https://github.com/RM-DragoPass-EC-Group/24-season-Infantry)
 
 [哨兵底盘](https://github.com/RM-DragoPass-EC-Group/24-season-Sentry-Chassis)
 
@@ -24,7 +24,7 @@
 
 [英雄](https://github.com/RM-DragoPass-EC-Group/25-season-Hero)
 
-[全向轮](https://github.com/RM-DragoPass-EC-Group/25-season-Omni-Infantry.git)
+[全向轮步兵](https://github.com/RM-DragoPass-EC-Group/25-season-Omni-Infantry.git)
 
 ## 寻求帮助
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
