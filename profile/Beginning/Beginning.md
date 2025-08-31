@@ -10,7 +10,7 @@ DragoPass电控组所有项目管理、版本控制在Github上进行，因此�
 受Keil µVision和ST-Link驱动程序的兼容性影响。电控组所有开发在Windows平台上进行，不支持其他操作系统。
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-若发现本教程有任何错误，请pull request本目录。如果有任何问题，请优先查找[官方文档](./Docs)，再google，其次询问ChatGPT等。若还有解决不了的问题，请询问其他队员。
+若发现本教程有任何错误，请pull request本目录。如果有任何问题，请优先查找[官方文档](https://github.com/RM-DragoPass-EC-Group/.github/tree/main/Docs)，再google，其次询问ChatGPT等。若还有解决不了的问题，请询问其他队员。
 
 ## 开发环境配置
 ### Keil v5 IDE
