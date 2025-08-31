@@ -15,10 +15,10 @@ DragoPass电控组所有项目管理、版本控制在Github上进行，因此�
 ## 开发环境配置
 ### Keil v5 IDE
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-[Arm Keil µVision](https://cuhko365-my.sharepoint.com/:f:/g/personal/123090823_link_cuhk_edu_cn/EvkIzlm_j8ZChO_C-2iTR_wBNjz43P8G0YBSb_AiGYvgWg?e=t37jqC) IDE是一个嵌入式领域强大的开发环境，用于Arm Cortex-M基于微控制器的应用程序开发，包括编程、调试和微控制器仿真功能。在电控组开发中作为编译器、烧录器和项目管理器使用。
+[Arm Keil µVision](https://cuhko365-my.sharepoint.com/:f:/g/personal/122090567_link_cuhk_edu_cn/EpD5RNALuEpJrk2PJqFk9OcBj2hMM1zYyE3drTg48dl3eQ?e=bc7DUc) IDE是一个嵌入式领域强大的开发环境，用于Arm Cortex-M基于微控制器的应用程序开发，包括编程、调试和微控制器仿真功能。在电控组开发中作为编译器、烧录器和项目管理器使用。
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-运行[mdk540.exe](https://cuhko365-my.sharepoint.com/:f:/g/personal/123090823_link_cuhk_edu_cn/EvkIzlm_j8ZChO_C-2iTR_wBNjz43P8G0YBSb_AiGYvgWg?e=t37jqC)，完成安装过程，请留意安装位置，后续编译器设置需要用到。
+运行[mdk540.exe](https://cuhko365-my.sharepoint.com/:f:/g/personal/122090567_link_cuhk_edu_cn/EpD5RNALuEpJrk2PJqFk9OcBj2hMM1zYyE3drTg48dl3eQ?e=bc7DUc)，完成安装过程，请留意安装位置，后续编译器设置需要用到。
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 安装成功后，Keil uVision5的Pack Manager会自动运行，如下图所示。每款开发板的处理器、GPIO等参数不同，因此需要配置对应的扩展包。在下文中会详细讲解。
@@ -33,7 +33,7 @@ DragoPass电控组所有项目管理、版本控制在Github上进行，因此�
 CubeMX是一个图形化的用户界面工具，用于配置STM32微控制器和生成初始化C代码。
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-运行[CubeMX.exe](https://cuhko365-my.sharepoint.com/:f:/g/personal/123090823_link_cuhk_edu_cn/EvkIzlm_j8ZChO_C-2iTR_wBNjz43P8G0YBSb_AiGYvgWg?e=t37jqC)，完成安装过程。
+运行[CubeMX.exe](https://cuhko365-my.sharepoint.com/:f:/g/personal/122090567_link_cuhk_edu_cn/EpD5RNALuEpJrk2PJqFk9OcBj2hMM1zYyE3drTg48dl3eQ?e=bc7DUc)，完成安装过程。
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 由于当前电控组所有开发都在官方的开发板C上进行，微处理器时序和初始化代码可使用已有框架，暂时不需要使用CubeMX单独配置。但是未来如果使用其他开发板，可能需要使用CubeMX，因此建议了解一下CubeMX的使用。
@@ -65,7 +65,7 @@ VSCode请前往微软官网自行安装。
 由于Robomaster多数开源项目基于旧版的FreeRTOS开发，不兼容新版Keil µVision MDK540预装的v6编译器，所以我们需要在IDE中添加v5版本编译器。
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-解压[Compiler_v5.zip](https://cuhko365-my.sharepoint.com/:f:/g/personal/123090823_link_cuhk_edu_cn/EvkIzlm_j8ZChO_C-2iTR_wBNjz43P8G0YBSb_AiGYvgWg?e=t37jqC)，运行setup.exe，完成安装过程。建议将编译器安装在Keil安装目录"Keil_v5\ARM\ARM_Compiler_v5"下。以Keil安装在"C:\Keil_v5"为例：
+解压[Compiler_v5.zip](https://cuhko365-my.sharepoint.com/:f:/g/personal/122090567_link_cuhk_edu_cn/EpD5RNALuEpJrk2PJqFk9OcBj2hMM1zYyE3drTg48dl3eQ?e=bc7DUc)，运行setup.exe，完成安装过程。建议将编译器安装在Keil安装目录"Keil_v5\ARM\ARM_Compiler_v5"下。以Keil安装在"C:\Keil_v5"为例：
 ![](./Images/Compiler2.png) ![](./Images/Compiler1.png)
 
 ### 应用编译器 & 开发板扩展包配置 & 烧录器设置
@@ -112,7 +112,7 @@ Debug目录下这个位置选择ST-Link：![](./Images/Debugger.png)
 ### 烧录至开发板
 #### 安装ST-Link烧录器驱动
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-解压[ST-Link驱动](https://cuhko365-my.sharepoint.com/:f:/g/personal/123090823_link_cuhk_edu_cn/EvkIzlm_j8ZChO_C-2iTR_wBNjz43P8G0YBSb_AiGYvgWg?e=t37jqC)，运行其中dpinst_amd64.exe程序，完成安装流程，重启电脑。
+解压[ST-Link驱动](https://cuhko365-my.sharepoint.com/:f:/g/personal/122090567_link_cuhk_edu_cn/EpD5RNALuEpJrk2PJqFk9OcBj2hMM1zYyE3drTg48dl3eQ?e=bc7DUc)，运行其中dpinst_amd64.exe程序，完成安装流程，重启电脑。
 
 #### 连接ST-Link
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
