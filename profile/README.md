@@ -1,6 +1,6 @@
-# 过岗龙战队电控组
+# 过港龙战队电控组
 
-欢迎来到香港中文大学（深圳）RoboMaster过岗龙战队电控组！
+欢迎来到香港中文大学（深圳）- 香港中文大学 RoboMaster过港龙战队电控组！
 
 ## 入门知识库
 [Tutorial](https://github.com/RM-DragoPass-EC-Group/EC-Group-Tutorial)
