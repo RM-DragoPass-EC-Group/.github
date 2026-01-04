@@ -2,6 +2,10 @@
 
 欢迎来到香港中文大学（深圳）RoboMaster过岗龙战队电控组！
 
+## 入门知识库
+[Tutorial](https://github.com/RM-DragoPass-EC-Group/EC-Group-Tutorial)
+[2026赛季培训资料库链接](https://pcnn22do1hxs.feishu.cn/wiki/RO2gwjUreiF2pdkWmUCc2BQ7ngf?from=from_copylink)
+
 ## 开发教程&文档
 [入门教程](https://github.com/RM-DragoPass-EC-Group/.github/blob/main/profile/Beginning/Beginning.md)
 
